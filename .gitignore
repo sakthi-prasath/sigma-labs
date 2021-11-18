@@ -1,0 +1,6 @@
+.DS_Store
+*.sw[mnop]
+node_modules
+psd
+haters
+*.mp4
