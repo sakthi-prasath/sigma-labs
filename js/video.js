@@ -1,11 +1,13 @@
 // play video when user enters room. Pause when leaving
-const video = document.getElementById('theaterVideo');
+const video = document.getElementById('movieScreen');
 video.pause();
 AFRAME.registerComponent('listener', {
   tick: function () {
     const userPosition = this.el.getAttribute('position')["z"];
 
-    if (userPosition <= -17) {
+    // console.log(video.src);
+    // console.log(userPosition);
+    if (userPosition <= -15) {
       video.play();
     } else {
       video.pause();
