@@ -15,7 +15,8 @@ function rgbToHex({ r, g, b }) {
 //   const scene = document.querySelector('#scene');
 var draw = function (atoms, bonds) {
     const scene = document.querySelector('#scene');
-    scene.innerHTML = "";
+    if (scene)
+        scene.innerHTML = "";
     delete AFRAME.components['cursor-listener'];
 
     let index = 0;
@@ -94,7 +95,7 @@ var draw = function (atoms, bonds) {
 };
 
 const mols = { 'caffeine': 'https://raw.githubusercontent.com/rollup/three-jsnext/master/examples/models/molecules/caffeine.pdb', 'ethanol': 'https://raw.githubusercontent.com/rollup/three-jsnext/master/examples/models/molecules/ethanol.pdb' }
-loader.load(mols['caffeine'], draw);
+loader.load(mols['ethanol'], draw);
 
 
 

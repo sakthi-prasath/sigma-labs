@@ -25,5 +25,8 @@
     "aframe-scene",
     "webvr",
     "vr"
-  ]
+  ],
+  "dependencies": {
+    "cors-anywhere": "^0.4.4"
+  }
 }
