@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="https://nitt.indreshp.xyz/static/images/logo.589f867513b0.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="main.css">
+    <title>Sigma Bonds</title>
+    <meta name="description" content="Now in 3D!">
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.84.0/examples/js/Mirror.js"></script>
+    <script src="init.js"></script>
+    <script src="js/mirror.js"></script>
+    <script src="js/keyboard.js"></script>
+</head>
+
+<body>
+
+    <a-scene fog="type: linear; color: #000; far: 16; near: 7">
+
+        <!-- Splash Screen -->
+        <div class="splash">
+            <div class="splash__card">
+                <h1>Sigma Bonds</h1>
+                <p>Made with ❤️</p>
+                <button class="splash__button">Enter</button>
+            </div>
+        </div>
+
+        <!-- Load Assets -->
+        <a-assets>
+            <!-- font mixin -->
+            <a-mixin id="quotes" text="font: mozillavr; height: 5; width: 2.5; color: #fff; align: center;">
+            </a-mixin>
+
+            <!-- global -->
+            <img id="floor" src="img/other/floor.jpg">
+            <img id="wall" src="img/other/wall-concrete.jpg" style="filter: invert(100%)">
+            <img id="wall-secret" src="img/other/wall-concrete-secret.jpg">
+            <img id="wall-brick" src="img/other/brick.jpg">
+
+            <!-- Wall images -->
+            <img id="team-poster" src="img/gold-frame.png">
+            <img id="mendeleev-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Dmitri_Mendeleev_1890s.jpg">
+            <img id="curie-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/800px-Marie_Curie_c._1920s.jpg">
+            <img id="avogadro-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/4/40/Amadeo_Avogadro.png">
+            <img id="boyle-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/The_Shannon_Portrait_of_the_Hon_Robert_Boyle.jpg/800px-The_Shannon_Portrait_of_the_Hon_Robert_Boyle.jpg">
+            <img id="lavoiser-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/85/David_-_Portrait_of_Monsieur_Lavoisier_%28cropped%29.jpg">
+            <img id="gay-lussac-image" crossorigin="anonymous"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Gaylussac.jpg/578px-Gaylussac.jpg">
+
+            <!-- Room 2-->
+            <img id="triad" src="img/triads.jpg">
+            <img id="mendeleev" src="img/mendeleev.png">
+            <img id="modern-table" src="img/modern-table.jpg">
+
+            <!-- Room 3 -->
+            <img id="mole" src="img/mole.jpg">
+            <img id="equi" src="img/equi.png">
+            <img id="thermo" src="img/thermo.jpg">
+            <img id="bonding" src="img/bonding.jpg">
+            <img id="cc" src="img/coordination-chemistry.png">
+            <img id="orbitals" src="img/orbitals.png">
+            <img id="oc" src="img/oc.png">
+
+            <!-- Room 4-->
+            <a-asset-item id="monitor" src="assets/monitor/monitor.dae"></a-asset-item>
+            <!-- Room 5 -->
+            <a-asset-item id="podium-obj" src="assets/Podium.obj"></a-asset-item>
+            <a-asset-item id="podium-mtl" src="assets/Podium.mtl"></a-asset-item>
+
+            <!-- Theater 6-->
+            <video id="movieScreen" autoplay loop="true" volume="0.5" webkit-playsinline playsinline
+                src="https://delta.nitt.edu/~anirudhvs/videos/fullerene.mp4"></video>
+            <img id="theater-curtains" src="img/theater/curtains.png">
+            <a-asset-item id="couch-obj" src="img/theater/couch/model.obj"></a-asset-item>
+            <a-asset-item id="couch-mtl" src="img/theater/couch/materials.mtl"></a-asset-item>
+            <!-- secret room asset -->
+        </a-assets>
+
+        <!-- User / Camera -->
+        <a-entity id="rig" movement-controls="fly: true; speed: 0.3" position="0 1.2 0" rotation="0 0 0">
+            <a-entity id="player" camera="user-height: 2.6" universal-controls position="0 20 0" listener kinematic-body
+                position: "0 19 0">
+            </a-entity>
+        </a-entity>
+        <!-- Start Room (spawn) -->
+        <a-entity position="-1.5 1.5 19.5" rotation="0 0 0">
+            <!--left wall -->
+            <a-entity rotation="0 90 0">
+                <a-text position="1 1.5 -4.4" font="mozillavr" scale="2 2 2" color="#FFD700"
+                    value="Sigma Bond\n\n Catalysed By\n\n Anirudh VS\n 106119012\n\n\n Indresh P\n 106119052\n\n\n Rinish Sam\n 106119102\n\n\n Sakthi Prasath\n 106119108"
+                    height="1.5" width="2.5" color="#fff" align="center"></a-text>
+                <a-image position="1 1.5 -4.4" src="#team-poster" height="5" width="5"></a-image>
+            </a-entity>
+        </a-entity>
+
+        <!-- hallway -->
+        <!-- right wall -->
+        <a-image position="-.1 3 1.5" rotation="0 -90 0" src="#curie-image" height="3" width="2.5"></a-image>
+        <a-text position="0 1.4 1" color="black" rotation="0 -90 0" font="mozillavr" value="Mary Curie">
+        </a-text>
+        <a-image position="-.1 3 13.5" rotation="0 -90 0" src="#mendeleev-image" height="3" width="2.5">
+        </a-image>
+        <a-text position="0 1.4 13" color="black" rotation="0 -90 0" font="mozillavr" value="Mendeleev">
+        </a-text>
+        <a-image position="-.1 3 -10.5" rotation="0 -90 0" src="#boyle-image" height="3" width="2.5"></a-image>
+        <a-text position="0 1.4 -11" color="black" rotation="0 -90 0" font="mozillavr" value="Robert Boyle">
+        </a-text>
+
+        <!-- left wall -->
+        <a-image position="-2.9 3 13.5" rotation="0 90 0" src="#gay-lussac-image" height="3" width="2.5">
+        </a-image>
+        <a-text position="-3 1.4 14" color="black" rotation="0 90 0" font="mozillavr" value="Gay Lussac">
+        </a-text>
+        <a-image position="-2.9 3 -10.5" rotation="0 90 0" src="#avogadro-image" height="3" width="2.5">
+        </a-image>
+        <a-text position="-3 1.4 -10" color="black" rotation="0 90 0" font="mozillavr" value="Avagadro">
+        </a-text>
+        <a-image position="-2.9 3 1.5" rotation="0 90 0" src="#lavoiser-image" height="3" width="2.5"></a-image>
+        <a-text position="-3 1.4 2" color="black" rotation="0 90 0" font="mozillavr" value="Lavoisier"></a-text>
+
+        <!-- Room 1 (Immediate right) Quotes -->
+        <a-entity position="10.5 1.5 19.5" rotation="0 -90 0">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-1.45 1 6.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-1.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0" value="Wise words"
+                height="1.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="1.45 1 6.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="1.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0" value="Wise words"
+                height="1.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <!-- Back wall -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000" position="-2 1.5 -4.4">
+            </a-entity>
+            <a-text position="-2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                value="There is no talent, \nneither genius without \nhardwork.\n\n\n-Mendeleev">
+            </a-text>
+            <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000" position="2 1.5 -4.4">
+            </a-entity>
+            <a-text position="2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                value="God would have \nnot made the universe \n as it is unless \nHe intended us \nto understand it.\n\n\n-Robert Boyle">
+            </a-text>
+
+            <!--right wall -->
+            <a-entity rotation="0 -90 0">
+                <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000"
+                    position="-2 1.5 -4.4">
+                </a-entity>
+                <a-text position="-2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                    value="Have no fear \nof perfection;\n you will never\n reach it.\n\n\n-Marie Curie">
+                </a-text>
+
+                <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000"
+                    position="2 1.5 -4.4">
+                </a-entity>
+                <a-text position="2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                    value="Nothing is lost\n nothing is created\n everything is\n transformed.\n\n\n-Antoine Lavoisier">
+                </a-text>
+            </a-entity>
+
+            <!--left wall -->
+            <a-entity rotation="0 90 0">
+                <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000"
+                    position="-2 1.5 -4.4">
+                </a-entity>
+                <a-text position="-2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                    value="In the natural sciences,\n and particularly in\n chemistry,\n generalities must come\n after the detailed\n knowledge of each fact\n and not before it.\n\n\n-Louis Gay-Lussac">
+                </a-text>
+                <a-entity geometry="primitive: plane; width: 2.5; height: 5" material="color: #000"
+                    position="2 1.5 -4.4">
+                </a-entity>
+                <a-text position="2 1.5 -4.4" mixin="quotes" scale="2 2 2"
+                    value="World is the problem,\nautomic bomb is the \nsolution.\n\n\n-Albert Eiensakthi">
+                </a-text>
+            </a-entity>
+        </a-entity>
+
+        <!-- Room 2 (First Left) Periodic table -->
+        <a-entity position="-10.5 1.5 7.5" rotation="0 90 0">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-4.45 1 6.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0"
+                value="The history of\n Periodic tables" height="2.5" width="2.5" color="#fff" align="center">
+            </a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="4.45 1 6.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0"
+                value="The history of\n Periodic table" height="2.5" width="2.5" color="#fff" align="center">
+            </a-text>
+
+            <a-image position="0 1.2 -4.4" src="#modern-table" height="4.75" width="7"></a-image>
+            <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000" position="0 5.1 -4.2"
+                rotation="15 0 0">
+            </a-entity>
+            <a-text font="mozillavr" scale="2 2 2" position="0 5.1 -4.2" rotation="15 0 0" value="Modern" height="2.5"
+                width="5" color="#fff" align="center"></a-text>
+            <!--right wall -->
+            <a-entity rotation="0 -90 0">
+                <a-image position="0 1.4 -4.4" src="#mendeleev" height="3.5" width="7"></a-image>
+                <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000"
+                    position="0 5.1 -4.2" rotation="15 0 0">
+                </a-entity>
+                <a-text font="mozillavr" scale="2 2 2" position="0 5.1 -4.2" rotation="15 0 0" value="Mendeleev"
+                    height="2.5" width="5" color="#fff" align="center"></a-text>
+            </a-entity>
+            <!--left wall -->
+            <a-entity rotation="0 90 0">
+                <a-image position="0 1.4 -4.4" src="#triad" height="3.25" width="6.5"></a-image>
+                <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000"
+                    position="0 5.1 -4.2" rotation="15 0 0">
+                </a-entity>
+                <a-text font="mozillavr" scale="2 2 2" position="0 5.1 -4.2" rotation="15 0 0" value="Triad"
+                    height="2.5" width="5" color="#fff" align="center"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <!-- Room 3 (First Right) Branches of chemistry -->
+        <a-entity position="7.5 1.5 7.5" rotation="0 -90 0">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-4.45 1 6.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0"
+                value="Branches in the\n Mystery" height="2.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="4.45 1 6.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0"
+                value="Branches in the\n Mystery" height="2.5" width="2.5" color="#fff" align="center"></a-text>
+            <!-- Back wall -->
+            <a-image position="-2.5 0.25 -4.4" src="#bonding" height="2.85" width="3.75"></a-image>
+            <a-image position="2.5 0.25 -4.4" src="#orbitals" height="2.1" width="3.75"></a-image>
+            <a-image position="0 3.25 -4.4" src="#cc" height="2.6" width="4.7"></a-image>
+            <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000" position="0 6.1 -4.2"
+                rotation="15 0 0">
+            </a-entity>
+            <a-text font="mozillavr" scale="2 2 2" position="0 6.1 -4.2" rotation="15 0 0" value="Inorganic"
+                height="2.5" width="5" color="#fff" align="center"></a-text>
+            <!--right wall -->
+            <a-entity rotation="0 -90 0">
+                <a-image position="0 1 -4.4" src="#oc" height="4.6" width="6.5"></a-image>
+                <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000"
+                    position="0 6.1 -4.2" rotation="15 0 0">
+                </a-entity>
+                <a-text font="mozillavr" scale="2 2 2" position="0 6.1 -4.2" rotation="15 0 0" value="Organic"
+                    height="2.5" width="5" color="#fff" align="center"></a-text>
+            </a-entity>
+            <!--left wall -->
+            <a-entity rotation="0 90 0">
+                <a-image position="-2.5 0 -4.4" src="#mole" height="3" width="3"></a-image>
+                <a-image position="2.25 0 -4.4" src="#equi" height="3" width="4"></a-image>
+                <a-image position="0 3.25 -4.4" src="#thermo" height="3" width="4"></a-image>
+                <a-entity geometry="primitive: plane; width: 5; height: 2.5" material="color: #000"
+                    position="0 6.1 -4.2" rotation="15 0 0">
+                </a-entity>
+                <a-text font="mozillavr" scale="2 2 2" position="0 6.1 -4.2" rotation="15 0 0" value="Physical"
+                    height="2.5" width="5" color="#fff" align="center"></a-text>
+            </a-entity>
+        </a-entity>
+
+        <!-- Room 4 (Second Left) -->
+        <a-entity position="-10.5 1.5 -4.5" rotation="0 90 0">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-4.45 1 6.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0" value="Sigma\n Labs"
+                height="2.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="4.45 1 6.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0" value="Sigma\n Labs"
+                height="2.5" width="2.5" color="#fff" align="center"></a-text>
+            <!-- Back wall -->
+            <!-- Panel -->
+
+            <a-entity position="0 1.5 -3" scale="1.8 1.8 1.8">
+                <a-entity id="moleculeName" position="-0.5 0.6 0"
+                    text="color: #fff;  value: Name: loading; width: 2; font: mozillavr;">
+                </a-entity>
+                <a-entity id="moleculeFormula" position="-0.5 0.4 0"
+                    text="color: #fff;  value: Formula: loading; width: 2; font: mozillavr;">
+                </a-entity>
+                <a-entity id="moleculeMass" position="-0.5 0.2 0"
+                    text="color: #fff;  value: Mass: loading; width: 2; font: mozillavr;">
+                </a-entity>
+                <a-entity id="moleculeChiral" position="-0.5 0.0 0"
+                    text="color: #fff;  value: Chiral: loading; width: 2; font: mozillavr;">
+                </a-entity>
+                <a-entity id="moleculeDescription" position="-0.5 -0.2 0"
+                    text="color: #fff;  value: Description: loading; width: 1.6; baseline: top; font: mozillavr;">
+                </a-entity>
+                <a-image id="moleculeImage" position="1 0.3 0" src="https://i.imgur.com/ZxlE18D.jpeg">
+                </a-image>
+            </a-entity>
+            <a-entity scale="1 1 1">
+                <a-entity collada-model="#monitor" position="-13 -1.5 11" rotation="0 0 0" scale="10 10 10">
+                </a-entity>
+            </a-entity>
+
+            <!-- Keyboard -->
+            <a-entity id="keyboard"
+                super-keyboard="imagePath:img; blinkingSpeed:99999999; filters:allupper; multipleInputs:true"
+                scale="3 3 3" position="-1 -0.5 3.5" rotation="-15 0 0"></a-entity>
+            <a-entity id="numpad"
+                super-keyboard="model: numpad; imagePath:img; blinkingSpeed:99999999; multipleInputs:true" scale="3 3 3"
+                position="1 -0.5 3.5" rotation="-15 0 0"></a-entity>
+
+            <!--right wall -->
+            <a-entity rotation="0 -90 0">
+
+                <a-plane height="7" width="7" mirror color="#ffffff" position="0 1.75 -4.4" rotation="0 0 0">
+                    <material side="double"></material>
+                </a-plane>
+
+            </a-entity>
+            <!--left wall -->
+            <a-entity rotation="0 90 0">
+                <a-entity position="-1 0.75 -2.5" scale="0.55 0.55 0.55" id="scene"
+                    animation="property: rotation; to: 0 360 0; loop: true; dur: 30000;"></a-entity>
+
+            </a-entity>
+
+        </a-entity>
+
+        <!-- Room 5 (Second Right) -->
+        <a-entity position="7.5 1.5 -4.5" rotation="0 -90 0">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-4.45 1 6.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0" value="Sigma Presentation"
+                height="2.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="4.45 1 6.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="4.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0" value="Sigma Presentation"
+                height="2.5" width="2.5" color="#fff" align="center">
+            </a-text>
+            <!-- Back wall -->
+
+            <a-image id="presentation" position="0 1.6 -4.3" src="https://i.imgur.com/f56Hehz.png" height="4"
+                width="7.5">
+            </a-image>
+            <!-- <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="0 1.5 -4.5"
+                rotation="0 -90 0"></a-entity> -->
+            <a-entity obj-model="obj: #podium-obj; mtl:#podium-mtl" position="-2 -1.5 -2" scale="0.03 0.04 0.03">
+            </a-entity>
+
+            <a-entity rotation="0 -90 0">
+
+            </a-entity>
+            <!--left wall -->
+            <a-entity rotation="0 90 0"></a-entity>
+        </a-entity>
+        <!-- Room 6 (far back room ) -->
+        <a-entity position="-1.5 1.5 -22.5">
+            <!-- Room Sign -->
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
+                position="-1.45 1 9.02" rotation="0 90 0">
+            </a-entity>
+            <a-text position="-1.45 1 9.02" font="mozillavr" scale="2 2 2" rotation="0 90 0" value="Theater"
+                height="2.5" width="2.5" color="#fff" align="center"></a-text>
+
+            <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="1.45 1 9.02"
+                rotation="0 -90 0">
+            </a-entity>
+            <a-text position="1.45 1 9.02" font="mozillavr" scale="2 2 2" rotation="0 -90 0" value="Theater"
+                height="2.5" width="2.5" color="#fff" align="center"></a-text>
+            <!-- Back wall -->
+            <a-video src="#movieScreen" id="movieViewer11" width="9" height="5.4" position="0 1.9 0"></a-video>
+            <a-image position="0 0 -4.4" src="#theater-curtains" height="12" width="9"></a-image>
+            <a-entity obj-model="obj: #couch-obj; mtl: #couch-mtl" position="0 -1 4" rotation="0 0 0" scale="4 4 4">
+            </a-entity>
+            <!-- ceiling -->
+            <a-plane position="0 6 0" rotation="90 0 0" height="9" width="9" color="black"></a-plane>
+        </a-entity>
+        <!-- Secret Room (Second Right) -->
+        <a-entity position="-22.5 1.5 19.5" rotation="0 0 0">
+            <a-entity rotation="0 90 0">
+                <a-image position="1 1.5 -4.4" src="https://i.imgur.com/NsBV4HF.png" height="2.5" width="2.5"></a-image>
+            </a-entity>
+        </a-entity>
+        <!-- Ground -->
+        <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
+        <!-- Walls (used by map.js) -->
+        <a-entity id="walls"></a-entity>
+        <!-- Sky -->
+        <a-sky id="sky" color="#0000ff"></a-sky>
+    </a-scene>
+    <script src="js/map.js"></script>
+    <script src="js/video.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
