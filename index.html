@@ -137,8 +137,8 @@
             <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000"
                 position="-1.45 1 6.02" rotation="0 90 0">
             </a-entity>
-            <a-text position="-1.45 1 6.02" scale="2 2 2" rotation="0 90 0" value="Wise words" height="1.5" width="2.5"
-                color="#fff" align="center"></a-text>
+            <a-text position="-1.45 1 6.02" font="mozillavr" scale="2 2 2" rotation="0 90 0" value="Wise words"
+                height="1.5" width="2.5" color="#fff" align="center"></a-text>
 
             <a-entity geometry="primitive: plane; width: 2.5; height: 1.5" material="color: #000" position="1.45 1 6.02"
                 rotation="0 -90 0">
@@ -379,8 +379,6 @@
             <!--left wall -->
             <a-entity rotation="0 90 0"></a-entity>
         </a-entity>
-
-
         <!-- Example Room 6 (far back room ) -->
         <a-entity position="-1.5 1.5 -22.5">
             <!-- Room Sign -->
@@ -403,7 +401,6 @@
             <!-- ceiling -->
             <a-plane position="0 6 0" rotation="90 0 0" height="9" width="9" color="black"></a-plane>
         </a-entity>
-
         <!-- Secret Room (Second Right) -->
         <a-entity position="-22.5 1.5 19.5" rotation="0 0 0">
             <!-- insert cringe -->
@@ -414,18 +411,13 @@
                 <a-image position="1 1.5 -4.4" src="#team-poster" height="5" width="5"></a-image>
             </a-entity>
         </a-entity>
-
         <!-- Ground -->
         <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
-
         <!-- Walls (used by map.js -->
         <a-entity id="walls"></a-entity>
-
         <!-- Sky -->
         <a-sky id="sky" color="#0000ff"></a-sky>
-
     </a-scene>
-
     <script src="js/map.js"></script>
     <script src="js/video.js"></script>
     <script src="main.js"></script>
