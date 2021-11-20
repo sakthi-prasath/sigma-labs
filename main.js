@@ -9,7 +9,7 @@ const molecules = [{
     "videoLink": "https://delta.nitt.edu/~anirudhvs/videos/water.mp4",
     "image": "https://i.imgur.com/ZxlE18D.jpeg",
     "isChiral": false,
-    "pdbLink": "https://cactus.nci.nih.gov/tmp/tclcactvs000sZ6HfQ.pdb"
+    "pdbLink": "https://cactus.nci.nih.gov/tmp/tclcactvs000Yq24q7.pdb"
 },
 {
     "name": "Ethanol",
